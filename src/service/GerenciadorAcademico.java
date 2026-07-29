@@ -1,4 +1,4 @@
 package service;
 
-public class GerenciadorNotas {
+public class GerenciadorAcademico {
 }
