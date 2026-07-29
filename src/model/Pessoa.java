@@ -35,7 +35,7 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
 
-    /** método abstrato para exibir os dados */
+    // metodo para exibir dados
     public abstract String exibirDados();
 
     @Override
