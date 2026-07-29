@@ -1,7 +1,8 @@
 package exception;
 
-public class ArquivoException extends RuntimeException {
-    public ArquivoException(String message) {
-        super(message);
+// para erros na leitura ou escrita dos arquivos de dados
+public class ArquivoException extends SistemaNotasException {
+    public ArquivoException(String mensagem, Throwable causa) {
+        super(mensagem, causa);
     }
 }

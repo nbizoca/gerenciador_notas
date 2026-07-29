@@ -1,7 +1,8 @@
 package exception;
 
-public class NotaInvalidaException extends RuntimeException {
-    public NotaInvalidaException(String message) {
-        super(message);
+/** quando a nota ou peso informado é inválido. */
+public class NotaInvalidaException extends SistemaNotasException {
+    public NotaInvalidaException(String mensagem) {
+        super(mensagem);
     }
 }
