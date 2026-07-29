@@ -38,8 +38,12 @@ public class Disciplina {
     }
 
     public void setCargaHoraria(int cargaHoraria) {
+        if (cargaHoraria <= 0) {
+            throw new IllegalArgumentException("Carga horária deve ser maior que zero.");
+        }
         this.cargaHoraria = cargaHoraria;
     }
+
 
     @Override
     public String toString() {

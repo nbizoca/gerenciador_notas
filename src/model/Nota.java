@@ -1,5 +1,7 @@
 package model;
 
+import exception.NotaInvalidaException;
+
 // é a nota do aluno em alguma disciplina
 public class Nota {
 
@@ -7,14 +9,14 @@ public class Nota {
     private double valor;
     private double peso;
 
-    public Nota(String descricao, double valor, double peso)  {
+    public Nota(String descricao, double valor, double peso) throws NotaInvalidaException {
         this.descricao = (descricao == null || descricao.trim().isEmpty()) ? "Avaliação" : descricao;
         setValor(valor);
         setPeso(peso);
     }
 
     //  quando o peso não é informado, fica igual a 1
-    public Nota(String descricao, double valor) {
+    public Nota(String descricao, double valor) throws NotaInvalidaException {
         this(descricao, valor, 1.0);
     }
 
@@ -30,7 +32,11 @@ public class Nota {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(double valor) throws NotaInvalidaException {
+        if (valor < 0.0 || valor > 10.0) {
+            throw new NotaInvalidaException(
+                    "Valor de nota inválido: " + valor + ". Deve estar entre 0.0 e 10.0.");
+        }
         this.valor = valor;
     }
 
@@ -38,7 +44,10 @@ public class Nota {
         return peso;
     }
 
-    public void setPeso(double peso)  {
+    public void setPeso(double peso) throws NotaInvalidaException {
+        if (peso <= 0.0) {
+            throw new NotaInvalidaException("Peso inválido: " + peso + ". Deve ser maior que zero.");
+        }
         this.peso = peso;
     }
 
