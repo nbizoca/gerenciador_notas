@@ -1,8 +1,6 @@
 package model;
 
-/**
- * classe abstrata que representa uma pessoa genérica
- */
+// classe abstrata que representa uma pessoa genérica
 public abstract class Pessoa {
 
     protected String nome;
