@@ -50,5 +50,14 @@ public class Disciplina {
         return String.format("[%s] %s (%dh)", codigo, nome, cargaHoraria);
     }
 
+    // formata para salvar no arquivo
+    public String paraArquivo() {
+        return codigo + ";" + nome + ";" + cargaHoraria;
+    }
+
+    public static Disciplina deArquivo(String linha) {
+        String[] partes = linha.split(";");
+        return new Disciplina(partes[0], partes[1], Integer.parseInt(partes[2]));
+    }
 
 }
