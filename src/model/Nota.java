@@ -56,4 +56,25 @@ public class Nota {
         return String.format("%-15s valor=%.2f  peso=%.1f", descricao, valor, peso);
     }
 
+    // formata a nota para gravar no arquivo
+    public String paraArquivo() {
+        return descricao + ":" + valor + ":" + peso;
+    }
+
+    // reconstrói uma Nota a partir do formato que foi salvo
+
+    public static Nota deArquivo(String texto) throws NotaInvalidaException {
+        String[] partes = texto.split(":");
+        if (partes.length != 3) {
+            throw new NotaInvalidaException("Formato de nota inválido no arquivo: " + texto);
+        }
+        try {
+            String descricao = partes[0];
+            double valor = Double.parseDouble(partes[1]);
+            double peso = Double.parseDouble(partes[2]);
+            return new Nota(descricao, valor, peso);
+        } catch (NumberFormatException e) {
+            throw new NotaInvalidaException("Não foi possível interpretar a nota: " + texto);
+        }
+    }
 }
