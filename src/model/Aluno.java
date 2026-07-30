@@ -49,4 +49,26 @@ public class Aluno extends Pessoa {
         return String.format("Matrícula: %-10s Nome: %-25s CPF: %s", matricula, nome, cpf);
     }
 
+    public String paraArquivo() {
+        return matricula + ";" + nome + ";" + cpf;
+    }
+
+    public static Aluno deArquivo(String linha) {
+        if (linha == null || linha.isBlank()) {
+            throw new IllegalArgumentException("Linha vazia");
+        }
+
+        String[] partes = linha.split(";");
+
+        if (partes.length != 3) {
+            throw new IllegalArgumentException("Linha mal formatada: " + linha);
+        }
+
+        String matricula = partes[0].trim();
+        String nome = partes[1].trim();
+        String sobrenome = partes[2].trim();
+
+        return new Aluno(nome, sobrenome, matricula);
+        }
+
 }
